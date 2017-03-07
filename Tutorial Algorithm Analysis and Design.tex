@@ -1,0 +1,187 @@
+\documentclass[18 pt]{article}
+\usepackage{comment}
+\usepackage{graphicx}
+\usepackage[top=1 in,bottom=1 in,right=1 in,left=1 in]{geometry}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+
+
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\rhead{}
+\cfoot{\thepage}
+\lfoot{}
+\rfoot{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\begin{document}
+\begin{huge}
+\font\myfont=cmr12 at 40pt
+\title{Tutorial 2}
+\author{}
+\date{}
+\maketitle
+\end{huge}
+\begin{flushleft}
+
+\begin{Large}
+Give asymptotic upper bounds only for T(n) in each of the following recurrences. Do not use Master theorem to find the solution. 
+\end{Large}
+\section{$T(n) = 2T(n/2) + n^4$}
+\Large Solution:
+\end{flushleft}
+
+Let's use the iterative method to figure out the running time \\
+
+$T(n) = 2*T(n/2) + n^4$
+
+$T(n) = 2*[2*T(n/{2^2})+{n/2}^4] + n^4 $
+
+$.$
+
+$.$
+
+$.$
+
+$T(n) = 2^{\log_2{n}}*T(1) + n^4*[1+[2/{2^4}]+[2/{2^4}]^2+...+[2/{2^4}]^{\log_2{n}-1} ]$
+
+$T(n) = 2^{\log_2{n}}*T(1) + n^4*[1+[1/{2^3}]+[1/{2^3}]^2+...+[1/{2^3}]^{\log_2{n}-1} ]$
+
+$T(n)= C_1 * 2^{\log_2{n}} + n^4 * \left[ \frac{1-(1/8)^{\log_2{n}}}{1-(1/8)} \right]$
+
+$T(n) = C_1*n^{log_2{2}} + \frac{8}{7}*n^4$
+
+$T(n) = C_1*n + C_2*n^4$\\
+
+We know that any solution must work for arbitrary constants $C_1$ and $C_2$, so we replace them both with 1 to keep things simple. \\
+
+Thus the running time is $C_1*n + C_2*n^4= n + n^4$. We observe that $ n < n^4$ for $n>2$, so the running time is $O(n^4)$.
+
+
+\begin{flushleft}
+\section{$T(n) = 7T(n/3) + n^2$}
+\Large Solution:
+\end{flushleft}
+
+Let's use the iterative method to figure out the running time \\
+
+$T(n) = 7*T(n/3) + n^2$
+
+$T(n) = 7*[7*T(n/{3^2})+{n/3}^2] + n^2 $
+
+$.$
+
+$.$
+
+$.$
+
+$T(n) = 7^{\log_3{n}}*T(1) + n^2*[1+[7/{3^2}]+[7/{3^2}]^2+...+[7/{3^2}]^{\log_3{n}-1} ]$
+
+$T(n)= C_1 * 7^{\log_3{n}} + n^2 * \left[ \frac{1-(7/9)^{\log_3{n}}}{1-(7/9)} \right]$
+
+$T(n) = C_1*n^{log_3{7}} + \frac{9}{2}*n^2$
+
+$T(n)= C_1*n^{log_3{7}} + C_2*n^2$\\
+
+We know that any solution must work for arbitrary constants $C_1$ and $C_2$, so we replace them both with 1 to keep things simple. \\
+
+Thus the running time is $C_1*n^{log_3{7}} + C_2*n^2 = n^{log_3{7}} + n^2$. We observe that $ n^{log_3{7}} < n^2$ for $n>0$, so the running time is $O(n^2)$.
+
+
+\begin{flushleft}
+\section{$T(n) = 7T(n/2) + n^2$}
+\Large Solution:
+\end{flushleft}
+
+Let's use the iterative method to figure out the running time \\
+
+$T(n) = 7*T(n/2) + n^2$
+
+$T(n) = 7*[7*T(n/{2^2})+{n/2}^2] + n^2 $
+
+$.$
+
+$.$
+
+$.$
+
+$T(n) = 7^{\log_2{n}}*T(1) + n^2*[1+[7/{2^2}]+[7/{2^2}]^2+...+[7/{2^2}]^{\log_2{n}-1} ]$
+
+$T(n)= C_1 * 7^{\log_2{n}} + n^2 * \left[ \frac{(7/4)^{\log_2{n}}-1}{(7/4)-1} \right]$
+
+$T(n) = C_1*n^{log_2{7}} + \frac{4}{3}*n^2*n^{log_2{7}-log_2{4}}$
+
+$T(n)= C_2*n^{log_2{7}} $\\
+
+We know that any solution must work for arbitrary constant $C_1$, so we replace it with 1 to keep things simple. \\
+
+Thus the running time is $C_1*n^{log_2{7}}= n^{log_2{7}}$. So the running time is $O(n^{log_2{7}})$.
+
+
+\begin{flushleft}
+\section{$T(n) = T(n-2) + n^2$}
+\Large Solution:
+\end{flushleft}
+
+Let's use the iterative method to figure out the running time \\
+
+$T(n) = T(n-2) + n^2$
+
+$T(n) = [T(n-2*2)+{n-2}^2] + n^2 $
+
+$T(n) = T(n-2*2)+ n^2*(1+1)-2*n*[2*(1)]+2^2*(1) $
+
+$T(n) = T(n-2*3)+ n^2*(1+1+1)-2*n*[2*(1+2)]+2^2*(1+2^2) $
+
+$T(n) = T(n-2*4)+ n^2*(1+1+1+1)-2*n*[2*(1+2+3)]+2^2*(1+2^2+3^2) $
+
+$.$
+
+$.$
+
+$.$
+
+$T(n) = T(1)+ n^2*(n/2)-2*n*[2*(1+2+3+...+(n/2-1))]+2^2*(1+2^2+3^2+...+(n/2-1)^2) $
+
+$T(n) = T(1)+ n^2*(n/2)-2*n*\left[2*\left(\frac{(n/2-1)*(n/2)}{2}\right)\right]+2^2*\left[2*\left(\frac{(n/2-1)*(n/2)*(n-1)}{6}\right)\right] $
+
+$T(n) = C_1 + C_2*n^3$\\
+
+We know that any solution must work for arbitrary constants $C_1$ and $C_2$, so we replace them both with 1 to keep things simple. \\
+
+Thus the running time is $C_1 + C_2*n^3 = n^3$. So the running time is $O(n^3)$.
+
+
+\begin{flushleft}
+\section{$T(n) = 3T(n/3) + \frac{n}{\log_3{n}}$}
+\Large Solution:
+\end{flushleft}
+
+Let's use the iterative method to figure out the running time \\
+
+$T(n) = 3*T(n/3) + \frac{n}{\log_3{n}}$
+
+$T(n) = 3*\left[3*T(n/{3^2}) + \frac{n}{3}*{\frac{1}{\log_3{n}-\log_3{3}}}\right] + \frac{n}{\log_3{n}} $
+
+$.$
+
+$.$
+
+$.$
+
+$T(n) = 3^{\log_3{n}}*T(1) + n*\left[\frac{1}{\log_3{n}}+ \frac{1}{\log_3{n}-1}+ \frac{1}{\log_3{n}-2}+...+\frac{1}{\log_3{n}-(k-1)} \right] $
+
+On solving logarithmic expansion
+
+$T(n) = C_1*n + C_2*n*\left[\log{\log{n}} \right]$\\
+
+We know that any solution must work for arbitrary constants $C_1$ and $C_2$, so we replace them both with 1 to keep things simple. \\
+
+Thus the running time is $C_1*n + C_2*n*\left[\log{\log{n}} \right]=n + n*\left[\log{\log{n}} \right]$. We observe that $ n < n*\left[\log{\log{n}} \right]$ for $n>2$, so the running time is $O(n\log{\log{n}})$.
+\end{document}
