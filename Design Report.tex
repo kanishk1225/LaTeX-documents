@@ -1,0 +1,135 @@
+\documentclass[18 pt]{article}
+\usepackage{comment}
+\usepackage{graphicx}
+\usepackage[top=1 in,bottom=1 in,right=1 in,left=1 in]{geometry}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage{wasysym}   
+\usepackage[ampersand]{easylist}
+\usepackage{enumitem,amssymb}
+\usepackage[utf8]{inputenc}
+\newlist{todolist}{itemize}{2}
+\setlist[todolist]{label=$\square$}
+\usepackage{pifont}
+\usepackage{movie15}	%gif addition
+\usepackage{hyperref}	%hyperlink 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+ 
+\urlstyle{
+	colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\rhead{}
+\cfoot{\thepage}
+\lfoot{}
+\rfoot{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+
+\begin{document}
+\begin{Large}
+
+\title{Image Data Extraction\\
+Design Report\\
+28th March 2017\\
+Version 1.0
+}
+\date{}
+\maketitle
+\begin{flushleft}
+
+\section{Summary}
+The product aims to solve the problem of reading text from the images. As we all are aware of the fact that in today's scenario how important data is and searching of relevant information is. Therefore, we are presenting a software which converts the text in the image a into text document and then operations can be performed on that text. \\
+\section{Algorithmic Design}
+In the following section we had described the algorithmic design of our product.
+
+\
+\
+\
+\subsection{DATA FLOW DIAGRAM}
+In this section we had shown how the image(data) is processed  in our application. The input image goes through several processes and finally results in a text document containing the extracted text from the image.
+\begin{center}
+\includegraphics[scale=1.1]{data_flow_diagram.png}\\
+\end{center}
+
+\subsection{ACTIVITY DIAGRAM}
+
+\begin{center}
+\includegraphics[scale=1.1]{Application_working.png}\\
+\end{center}
+
+\subsection{Algorithm}
+Preprocessing of an image. This is done for the better efficiency of the algorithm. In preprocessing the end data is the image in which the text region is known.
+\begin{center}
+\includegraphics[scale=1.1]{Algorithmic_Design.png}\\
+\end{center}
+\
+\newpage
+After preprocessing, from the known text region we isolate characters and recognise them using Template Matching. Then the recognised text is stored.
+\begin{center}
+\includegraphics[scale=1.1]{Extracting_Text.png}\\
+\end{center}
+\
+\
+\
+\newpage
+Following are the example of templates used for recognising the text from the image.
+\begin{center}
+\includegraphics[scale=1.1]{Template_Matching.png}\\
+\end{center}
+
+
+\section{Frequently Asked Questions}
+\subsection{What is the function of your application?}
+Our application extracts the text from an image and stores it in a text document.
+\subsection{What is the benefit of Image Data Extraction?}
+Image Data Extraction is the best application that provides instantaneous data from images.
+\subsection{How can we load images in the application?}
+Images can be loaded in two ways:
+\begin{enumerate}
+\item load image from gallery or/and,
+\item capture image 
+\end{enumerate}
+\subsection{Does your application extracts the hand written text?}
+No, our application doesn't extract the hand written text.
+\subsection{Does image should only contain text or it can contain other objects?}
+No, it can contain other non-text objects in the image also.
+\section{Comments} 
+For further information, suggestion or complaint contact:\\
+
+Project Code: \href{https://github.com/kanishk1225/Image-Data-Extraction}{https://github.com/kanishk1225/Image-Data-Extraction}\\
+Github profile: \href{https://github.com/kanishk1225}{https://github.com/kanishk1225}\\
+Mail ID: \href{kanishk125.ucs2015@iitr.ac.in}{kanishk125.ucs2015@iitr.ac.in}\\
+Gitter Chat Group: \href{https://gitter.im/Image-Data-Extraction/Lobby\#}{https://gitter.im/Image-Data-Extraction/Lobby\#}\\
+\section{Team Members}
+\begin{enumerate}
+\item Kanishk Goyal \	(15114035)
+		
+\item Siraz Shaikh 	\	(15114065)
+		
+\item Sunil Yadav 	\	(14114064)
+
+\item Ujjawal 	\	\	(15114074)
+\end{enumerate}
+
+
+
+\end{flushleft}
+\end{Large}
+\end{document}
